@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=Battery_Charger.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=Battery_Charger.SchDoc|Designator=U_LTC4020_Controller|SchDesignator=U_LTC4020_Controller|FileName=LTC4020_Controller.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=LTC4020_Controller.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Battery_Charger.SchDoc|Designator=U_Switching_Bridge|SchDesignator=U_Switching_Bridge|FileName=Switching_Bridge.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Switching_Bridge.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
