@@ -134,6 +134,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OQJXQBPX
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Battery_Charger_Design\Design Rule Check - Battery_Charger.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0

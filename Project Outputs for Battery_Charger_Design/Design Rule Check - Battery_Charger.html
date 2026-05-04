@@ -1,0 +1,493 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\ADDevelop\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">04/05/2026</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">08:58:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc" class="file"><acronym title="C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc">C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">51</td></tr>
+</table>
+</td>
+</table><a name="IDT3FESB5FOIE3J00FT0ZLMY5ILIZSAEJIFEEAO1DJ03G4DDZQYFFE"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZOE1MQGI0TI4LV2SLLO5IY4ADJRLXTU041VCBOBMNNPQTARXEO0I">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWHRLKL0ESQDEKKV4JPC1DF5BZHFXH14MGWGUNDK4F0WS00QIQCMI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLE13PKEEU1O2N50JHQ20U23YO3EUDKHHHI0VSH2KO2KBXTC2MHH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZNTITXLZPTNYNTL4WR5P44TIIL1S4WIZ1VE22QOZWUN3HRTHDOAP">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMG0HLXGLVY2WEC2LJPFJQD5U5C3XCRU5WUNV2DC5LIOFW1VRAT4G">Width Constraint (Min=10mil) (Max=50mil) (Preferred=20mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOVCBC0X4A4M5MCVJ52RRIJA1KDIT4LOBH2J5XEG4O0ZQJ3TZV22H">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAN32LAQLEXQ5LZEGEQTHOXNYHGPMX0OR2MPZRWOSGF2ZN0S2IBV">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2HP4ENVYWWAWHTEXKIHO3EPUGFRAW2DKOZRGTAM21E4IV4NCLYJF">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVBUYTEF3JTP5IILC1ZCGZ53D2UAUXFSJFHLGFGM1IUSOBVIWY4J">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDN4VLV1YM4YNP51U3JVPZCYLEKVCF1YYDVCBSGFEGZEE0KGNW20H">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">42</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRURCM4KSCE3SGP03WLIBVGX5L4KYNEMP1HM5FPRB4QEYW5QDINF">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFVYX5KV1ZHTEM2JUVLDB3JJRGYQUIFHSAANE5PUQ3JTSJFCRWLE">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGS2U15TJCR31DWGXIK5JJ1T33LUNNGNY5UFVGVL3XW1S1SZBIIUE">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBHOU3JBQR1H3MO2C2CX3GQ0NLCRSGYZRPZO3YFDSJOWLSNA1ORPN">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">51</td>
+</tr>
+</table><br><a name="IDN4VLV1YM4YNP51U3JVPZCYLEKVCF1YYDVCBSGFEGZEE0KGNW20H"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.091mil|Location2.X=4009.341mil|Location1.Y=2869.651mil|Location2.Y=2880.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.091mil|Location2.X=4009.341mil|Location1.Y=2869.651mil|Location2.Y=2880.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.717mil &lt; 10mil) Between Pad U1-1(2980mil,1867.48mil) on Top Layer And Pad U1-38(3017.496mil,1895.134mil) on Top Layer [Top Solder] Mask Sliver [7.717mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2851.934mil|Location2.Y=2863.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2851.934mil|Location2.Y=2863.184mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-1(2980mil,1867.48mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2694.611mil|Location2.Y=2705.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2694.611mil|Location2.Y=2705.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-10(2980mil,1690.315mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2674.926mil|Location2.Y=2686.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2674.926mil|Location2.Y=2686.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-11(2980mil,1670.63mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.091mil|Location2.X=4009.341mil|Location1.Y=2635.399mil|Location2.Y=2646.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.091mil|Location2.X=4009.341mil|Location1.Y=2635.399mil|Location2.Y=2646.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.717mil &lt; 10mil) Between Pad U1-12(2980mil,1650.945mil) on Top Layer And Pad U1-13(3017.496mil,1623.291mil) on Top Layer [Top Solder] Mask Sliver [7.717mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2646.226mil|Location2.Y=2657.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2646.226mil|Location2.Y=2657.476mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-12(2980mil,1650.945mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.934mil|Location2.X=4014.184mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.934mil|Location2.X=4014.184mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-13(3017.496mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.635mil|Location2.X=4032.885mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.635mil|Location2.X=4032.885mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-14(3037.181mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.32mil|Location2.X=4052.57mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.32mil|Location2.X=4052.57mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-15(3056.866mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.005mil|Location2.X=4072.255mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.005mil|Location2.X=4072.255mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-16(3076.551mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.69mil|Location2.X=4091.94mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.69mil|Location2.X=4091.94mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-17(3096.236mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.375mil|Location2.X=4111.625mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.375mil|Location2.X=4111.625mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-18(3115.921mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.761mil|Location2.X=4155.011mil|Location1.Y=2635.399mil|Location2.Y=2646.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.761mil|Location2.X=4155.011mil|Location1.Y=2635.399mil|Location2.Y=2646.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.717mil &lt; 10mil) Between Pad U1-19(3135.606mil,1623.291mil) on Top Layer And Pad U1-20(3173.102mil,1650.945mil) on Top Layer [Top Solder] Mask Sliver [7.717mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.918mil|Location2.X=4150.168mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.918mil|Location2.X=4150.168mil|Location1.Y=2641.875mil|Location2.Y=2653.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-19(3135.606mil,1623.291mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2852.091mil|Location2.Y=2863.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2852.091mil|Location2.Y=2863.341mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-2(2980mil,1847.795mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2655.241mil|Location2.Y=2666.491mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2655.241mil|Location2.Y=2666.491mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-20(3173.102mil,1650.945mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2655.084mil|Location2.Y=2666.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2655.084mil|Location2.Y=2666.334mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-21(3173.102mil,1670.63mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2674.769mil|Location2.Y=2686.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2674.769mil|Location2.Y=2686.019mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-22(3173.102mil,1690.315mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2694.454mil|Location2.Y=2705.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2694.454mil|Location2.Y=2705.704mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-23(3173.102mil,1710mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2714.139mil|Location2.Y=2725.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2714.139mil|Location2.Y=2725.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-24(3173.102mil,1729.685mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2733.824mil|Location2.Y=2745.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2733.824mil|Location2.Y=2745.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-25(3173.102mil,1749.37mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2753.509mil|Location2.Y=2764.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2753.509mil|Location2.Y=2764.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-26(3173.102mil,1769.055mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2773.194mil|Location2.Y=2784.444mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2773.194mil|Location2.Y=2784.444mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-27(3173.102mil,1788.74mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2792.879mil|Location2.Y=2804.129mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2792.879mil|Location2.Y=2804.129mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-28(3173.102mil,1808.425mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2812.564mil|Location2.Y=2823.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2812.564mil|Location2.Y=2823.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-29(3173.102mil,1828.11mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2832.406mil|Location2.Y=2843.656mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2832.406mil|Location2.Y=2843.656mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-3(2980mil,1828.11mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2832.249mil|Location2.Y=2843.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2832.249mil|Location2.Y=2843.499mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-30(3173.102mil,1847.795mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.761mil|Location2.X=4155.011mil|Location1.Y=2871.776mil|Location2.Y=2883.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.761mil|Location2.X=4155.011mil|Location1.Y=2871.776mil|Location2.Y=2883.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.717mil &lt; 10mil) Between Pad U1-31(3173.102mil,1867.48mil) on Top Layer And Pad U1-32(3135.606mil,1895.134mil) on Top Layer [Top Solder] Mask Sliver [7.717mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2860.95mil|Location2.Y=2872.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4143.269mil|Location2.X=4154.519mil|Location1.Y=2860.95mil|Location2.Y=2872.2mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-31(3173.102mil,1867.48mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4120.06mil|Location2.X=4131.31mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4120.06mil|Location2.X=4131.31mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-32(3135.606mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.375mil|Location2.X=4111.625mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.375mil|Location2.X=4111.625mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-33(3115.921mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.69mil|Location2.X=4091.94mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.69mil|Location2.X=4091.94mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-34(3096.236mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.005mil|Location2.X=4072.255mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4061.005mil|Location2.X=4072.255mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-35(3076.551mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.32mil|Location2.X=4052.57mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.32mil|Location2.X=4052.57mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-36(3056.866mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.635mil|Location2.X=4032.885mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.635mil|Location2.X=4032.885mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-37(3037.181mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.934mil|Location2.X=4014.184mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.934mil|Location2.X=4014.184mil|Location1.Y=2865.3mil|Location2.Y=2876.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-38(3017.496mil,1895.134mil) on Top Layer And Pad U1-39(3076.551mil,1759.213mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2812.721mil|Location2.Y=2823.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2812.721mil|Location2.Y=2823.971mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-4(2980mil,1808.425mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2793.036mil|Location2.Y=2804.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2793.036mil|Location2.Y=2804.286mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-5(2980mil,1788.74mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2773.351mil|Location2.Y=2784.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2773.351mil|Location2.Y=2784.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-6(2980mil,1769.055mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2753.666mil|Location2.Y=2764.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2753.666mil|Location2.Y=2764.916mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-7(2980mil,1749.37mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2733.981mil|Location2.Y=2745.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2733.981mil|Location2.Y=2745.231mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-8(2980mil,1729.685mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2714.296mil|Location2.Y=2725.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3998.584mil|Location2.X=4009.834mil|Location1.Y=2714.296mil|Location2.Y=2725.546mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.701mil &lt; 10mil) Between Pad U1-39(3076.551mil,1759.213mil) on Top Layer And Pad U1-9(2980mil,1710mil) on Top Layer [Top Solder] Mask Sliver [8.701mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRURCM4KSCE3SGP03WLIBVGX5L4KYNEMP1HM5FPRB4QEYW5QDINF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1845.477mil|Location2.X=1856.727mil|Location1.Y=1444.335mil|Location2.Y=1455.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1845.477mil|Location2.X=1856.727mil|Location1.Y=1444.335mil|Location2.Y=1455.585mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad D5-1(920mil,447.795mil) on Top Layer And Track (797.559mil,449.961mil)(843.228mil,449.961mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1983.273mil|Location2.X=1994.523mil|Location1.Y=1444.335mil|Location2.Y=1455.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1983.273mil|Location2.X=1994.523mil|Location1.Y=1444.335mil|Location2.Y=1455.585mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad D5-1(920mil,447.795mil) on Top Layer And Track (996.772mil,449.961mil)(1042.441mil,449.961mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1845.477mil|Location2.X=1856.727mil|Location1.Y=1164.414mil|Location2.Y=1175.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1845.477mil|Location2.X=1856.727mil|Location1.Y=1164.414mil|Location2.Y=1175.664mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad D5-2(920mil,172.205mil) on Top Layer And Track (797.559mil,170.039mil)(843.228mil,170.039mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1983.273mil|Location2.X=1994.523mil|Location1.Y=1164.414mil|Location2.Y=1175.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1983.273mil|Location2.X=1994.523mil|Location1.Y=1164.414mil|Location2.Y=1175.664mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad D5-2(920mil,172.205mil) on Top Layer And Track (996.772mil,170.039mil)(1042.441mil,170.039mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.926mil|Location2.X=3977.176mil|Location1.Y=2872.674mil|Location2.Y=2883.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.926mil|Location2.X=3977.176mil|Location1.Y=2872.674mil|Location2.Y=2883.924mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.827mil &lt; 10mil) Between Pad U1-1(2980mil,1867.48mil) on Top Layer And Track (2971.551mil,1886.213mil)(2971.551mil,1904.213mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.827mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.926mil|Location2.X=3977.176mil|Location1.Y=2634.501mil|Location2.Y=2645.751mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.926mil|Location2.X=3977.176mil|Location1.Y=2634.501mil|Location2.Y=2645.751mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.827mil &lt; 10mil) Between Pad U1-12(2980mil,1650.945mil) on Top Layer And Track (2971.551mil,1614.213mil)(2971.551mil,1632.213mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.827mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.926mil|Location2.X=4187.176mil|Location1.Y=2634.501mil|Location2.Y=2645.751mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.926mil|Location2.X=4187.176mil|Location1.Y=2634.501mil|Location2.Y=2645.751mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.827mil &lt; 10mil) Between Pad U1-20(3173.102mil,1650.945mil) on Top Layer And Track (3181.551mil,1614.213mil)(3181.551mil,1632.213mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.827mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.926mil|Location2.X=4187.176mil|Location1.Y=2872.674mil|Location2.Y=2883.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.926mil|Location2.X=4187.176mil|Location1.Y=2872.674mil|Location2.Y=2883.924mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.827mil &lt; 10mil) Between Pad U1-31(3173.102mil,1867.48mil) on Top Layer And Track (3181.551mil,1886.213mil)(3181.551mil,1904.213mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.827mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDFVYX5KV1ZHTEM2JUVLDB3JJRGYQUIFHSAANE5PUQ3JTSJFCRWLE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3421.406mil|Location2.X=3432.656mil|Location1.Y=3207.368mil|Location2.Y=3218.618mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\user\Documents\Battery_Charger_Project\LiFePO4_Battery_Charger\Battery_Charger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3421.406mil|Location2.X=3432.656mil|Location1.Y=3207.368mil|Location2.Y=3218.618mil|Absolute=True">Silk To Silk Clearance Constraint: (9.626mil &lt; 10mil) Between Arc (2441.378mil,2210mil) on Top Overlay And Text "D2" (2317.457mil,2175.01mil) on Top Overlay Silk Text to Silk Clearance [9.626mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
